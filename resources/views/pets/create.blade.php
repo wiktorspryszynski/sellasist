@@ -3,7 +3,7 @@
 @section('content')
     <h1 class="h4 mb-4">Dodaj peta</h1>
 
-    <div class="card bg-secondary bg-opacity-10 border-secondary" style="max-width: 600px;">
+    <div class="card bg-secondary bg-opacity-10 border-secondary text-light" style="max-width: 600px;">
         <div class="card-body">
             <form action="{{ url('/pets') }}" method="POST">
                 @csrf
