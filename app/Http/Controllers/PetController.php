@@ -26,6 +26,19 @@ class PetController extends Controller
         return view('pets.index', compact('pets', 'status', 'error'));
     }
 
+    public function search(Request $request)
+    {
+        $id = (int) $request->query('id');
+
+        try {
+            $pet = $this->petstore->find($id);
+        } catch (\RuntimeException $e) {
+            return redirect()->route('pets.index')->withErrors(['error' => $e->getMessage()]);
+        }
+
+        return redirect()->route('pets.show', $pet['id']);
+    }
+
     public function create()
     {
         return view('pets.create');
