@@ -14,7 +14,9 @@
         @endforeach
     </div>
 
-    @if(empty($pets))
+    @if($error)
+        <div class="alert alert-danger">{{ $error }}</div>
+    @elseif(empty($pets))
         <p class="text-secondary">Brak petów o statusie <strong>{{ $status }}</strong>.</p>
     @else
         <table class="table table-dark table-hover table-bordered align-middle">

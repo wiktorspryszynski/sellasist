@@ -17,7 +17,7 @@ class PetRequest extends FormRequest
             'name'           => ['required', 'string', 'max:255'],
             'status'         => ['required', 'in:available,pending,sold'],
             'photoUrls'      => ['nullable', 'array'],
-            'photoUrls.*'    => ['url'],
+            'photoUrls.*'    => ['nullable', 'url'],
             'tags'           => ['nullable', 'array'],
             'tags.*.name'    => ['nullable', 'string'],
         ];

@@ -14,13 +14,16 @@ class PetController extends Controller
     {
         $status = $request->query('status', 'available');
 
+        $error = null;
+        $pets = [];
+
         try {
             $pets = $this->petstore->getByStatus($status);
         } catch (\RuntimeException $e) {
-            return back()->withErrors(['error' => $e->getMessage()]);
+            $error = $e->getMessage();
         }
 
-        return view('pets.index', compact('pets', 'status'));
+        return view('pets.index', compact('pets', 'status', 'error'));
     }
 
     public function create()
